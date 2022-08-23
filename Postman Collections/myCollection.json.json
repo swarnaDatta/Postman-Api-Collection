@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "5e364b8e-3b2b-4623-8823-175df4b40866",
+		"name": "DemoAPIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Folder",
+			"item": [
+				{
+					"name": "GetUserList Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a2f8fd5f-b47c-4def-bcc1-5e716460a2c6",
+								"exec": [
+									"pm.test(\"Verify Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "60fba01a-9511-4dce-a334-91943caad1b0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users?page=2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "2bf1a913-c061-4c1b-98bf-7270244224dd"
+		},
+		{
+			"name": "GetUserList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a2f8fd5f-b47c-4def-bcc1-5e716460a2c6",
+						"exec": [
+							"pm.test(\"status code is: 200\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"console.log(\"Hello World...\")\r",
+							"//Priority: Local > Data > Ennv > Collection > Global\r",
+							"//settings variable\r",
+							"pm.globals.set('name','Rutherford');\r",
+							"pm.collectionVariables.set('name','Newton');\r",
+							"pm.environment.set('name','Einstein');\r",
+							"pm.environment.set('name',\"Nobel\")\r",
+							"\r",
+							"//Getting variable\r",
+							"let globVar = pm.globals.get('name');\r",
+							"console.log(globVar);\r",
+							"\r",
+							"let colVar = pm.collectionVariables.get('name');\r",
+							"console.log(colVar)\r",
+							"\r",
+							"let locVar = pm.variables.get('name')\r",
+							"console.log(locVar)\r",
+							"// remove a variable\r",
+							"pm.environment.unset('name')"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "814dc330-6416-4e0f-950a-20d5169b159e",
+						"exec": [
+							"console.log('This is a log')\r",
+							"console.info('This is an info')\r",
+							"console.warn(\"This is a warn\")\r",
+							"console.error('This is en error')"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "789cd302-f819-43fd-83d6-5975b374bcba",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser",
+			"_postman_id": "4fa1ae3a-05af-4e82-a4e0-3060e9d9d709",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "https://reqres.in/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser",
+			"_postman_id": "bb2e4bb5-f760-48b1-9c42-cc23e4373a6f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": "https://reqres.in/api/users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "PertiallyUpdateUser",
+			"_postman_id": "f8d4a3f0-787e-489f-a816-3e4f4c175039",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": "https://reqres.in/api/users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"_postman_id": "d51b390e-81db-45ce-bc45-89c511f53e26",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "https://reqres.in/api/users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterUser",
+			"_postman_id": "8bb53da5-8006-4a4b-9996-8595c84c04b9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/{{endpoint}}"
+			},
+			"response": []
+		},
+		{
+			"name": "AuthorizationDemo",
+			"_postman_id": "2c1fc390-ddc7-4fbf-92df-3a475c25a1cb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"addTokenTo": "header"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "https://api.github.com/user/repos"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2e99dd5a-bf2f-4214-9f75-384c8e3102b5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "246fe60b-ac30-41d2-a3e1-3b311071b7ae",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "24a8104e-82c7-4ece-81bc-870691743b23",
+			"key": "url",
+			"value": "https://reqres.in/api/",
+			"type": "string"
+		},
+		{
+			"id": "6fcc471a-e544-48e1-9d13-7ac2aae3ff4e",
+			"key": "name",
+			"value": "Newton",
+			"type": "string"
+		}
+	]
+}
